@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/login" >
+    <input type="text" name="student_id" id="student_id">
+    <input type="password" name="psd" id="psd">
+    <input type="submit">提交</input>
+</form>
+    <script>
+        var ajax=new XMLHttpRequest();
+        ajax.open("GET","/getData",true);
+        ajax.send();
+        ajax.onreadystatechange=function () {
+            if(ajax.readyState===4&&ajax.status===2){
+
+            }
+        }
+        function  submit() {
+            var stuId=document.getElementById("student_id").value;
+            var psd=document.getElementById("psd").value;
+            var ajax=new XMLHttpRequest();
+            console.log(stuId,psd)
+            var data=`stuId=${stuId}&psd=${psd}`
+            // ajax.open("GET",`/login?${data}`,true);
+            ajax.open("POST",`/login`,true);
+            ajax.send(data);
+            console.log(ajax)
+            ajax.onreadystatechange=function (data) {
+                // console.log(data)
+                if(ajax.readyState===4&&ajax.status===200){
+                    // console.log("success",data);
+                    // alert(ajax.responseText)
+                    location.href="./main.html"
+                }else if(ajax.readyState===4&&ajax.status===404){
+                    // console.log("success",data);
+                    alert(ajax.responseText)
+                }else if(ajax.readyState===4&&ajax.status===403){
+                    // console.log("success",data);
+                    alert(ajax.responseText)
+                }
+            }
+
+        }
+
+    </script>
+</body>
+</html>

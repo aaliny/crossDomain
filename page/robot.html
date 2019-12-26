@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>robot</title>
+    <link rel="stylesheet" type="text/css" href="robot.css"></link>
+</head>
+<body>
+    <div class="wrap">
+        <div class="title">聊天机器人</div>
+        <div class="content">
+            <!--<div class="head-cont">-->
+                <!--<div class="headl"></div>-->
+                <!--<span class="robotMsg">你好</span>-->
+            <!--</div>-->
+            <!--<div class="head-cont">-->
+                <!--<div class="headr"></div>-->
+                <!--<span class="myMsg">谢谢</span>-->
+            <!--</div>-->
+        </div>
+        <div class="talk">
+            <input class="val" type="text" name="" id="" onkeydown="send(event)">
+            <button onclick="send(event)">发送</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    function send(e,msg){
+        if (e instanceof KeyboardEvent && e.key != "Enter") {
+            return;
+        }
+        var cont=document.getElementsByClassName("content")[0]
+        var val=document.getElementsByClassName("val")[0].value;
+        if(e!=='o'&&!val){
+            return;
+        }
+        var que=document.createElement("div");
+        que.classList.add('head-cont');
+        var queChild=document.createElement("div");
+        var queSpan=document.createElement("span");
+        if(e!=='o'){
+            queChild.classList.add("headr")
+            queSpan.classList.add("myMsg");
+            queSpan.innerText=val;
+        }else{
+            queChild.classList.add("headl")
+            queSpan.classList.add("robotMsg")
+            queSpan.innerText=msg;
+        }
+        que.appendChild(queChild);
+        que.appendChild(queSpan)
+        cont.appendChild(que);
+        if(e!=='o'){
+            var xml=new XMLHttpRequest();
+            xml.open('GET',"http://127.0.0.1:12306/qryRobot?val="+val,true);
+            xml.send();
+            xml.onreadystatechange=function () {
+                console.log(xml)
+                if(xml.readyState===4&&xml.status===200){
+                    console.log(xml.responseText);
+                    send('o',JSON.parse(xml.responseText).text);
+                    document.getElementsByClassName("val")[0].value = "";
+                }
+            }
+
+        }
+
+    }
+</script>
+</html>

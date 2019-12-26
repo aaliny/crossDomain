@@ -1,0 +1,131 @@
+
+.wrap{
+    width:400px;
+    margin:0 auto;
+    height:600px;
+    background-color: beige;
+}
+.title{
+    width: 100%;
+    height: 50px;
+    background-color: #595151;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+}
+.content{
+    width: 100%;
+    height: 500px;
+    overflow-y: auto;
+}
+.talk{
+    width: 100%;
+    background-color: #595151;
+    height: 50px;
+    position: relative;
+}
+input{
+    height: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    border: none;
+    width: 78%;
+    left: 10px;
+    border-radius: 5px;
+}
+button{
+    border: none;
+    background-color: #76c076;
+    padding: 5px 10px;
+    position: absolute;
+    top: calc(50% - 15px);
+    right: 10px;
+    border-radius: 5px;
+}
+.headl{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: yellow;
+    border-radius: 12px;
+    float: left;
+}
+.headr{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: purple;
+    border-radius: 12px;
+    float: right;
+}
+.head-cont{
+    padding: 10px;
+    vertical-align: middle;
+}
+.head-cont:after{
+    display: block;
+    content:"";
+    clear: both;
+}
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+.clear:nth-of-type(1) .head-cont{
+    float:left;
+}
+.clear:nth-of-type(2) .head-cont{
+    float:right;
+}
+.robotMsg{
+    position: relative;
+    display: inline-block;
+    background: white;
+    float: left;
+    padding: 5px 10px;
+    line-height: 25px;
+    border-radius: 5px;
+    margin-left: 10px;
+    max-width: 60%;
+}
+.myMsg{
+    position: relative;
+    display: inline-block;
+    float: right;
+    background: rgb(158,234,106);
+    padding: 5px 10px;
+    line-height: 25px;
+    border-radius: 5px;
+    margin-right: 10px;
+    max-width: 60%;
+}
+.myMsg:after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: -10px;
+    top: 8px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #EBEBEB #EBEBEB #EBEBEB rgb(158,234,106);
+}
+.robotMsg:after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: -10px;
+    top: 8px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #EBEBEB white #EBEBEB #EBEBEB;
+}
