@@ -10,7 +10,7 @@ http.createServer((req,res)=>{
     var pathname=url.parse(req.url).pathname
     log(pathname)
     if(isStatic(pathname)){
-        try {
+        try {   
             var datas=fs.readFileSync(`${__dirname}${globalConf["page_path"]}${pathname}`)
             res.writeHead("200");
             res.write(datas);
