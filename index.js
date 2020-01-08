@@ -11,7 +11,7 @@ http.createServer((req,res)=>{
     log(pathname)
     if(isStatic(pathname)){
         try {
-            console.log('branch')
+            console.log('master')
             var datas=fs.readFileSync(`${__dirname}${globalConf["page_path"]}${pathname}`)
             res.writeHead("200");
             res.write(datas);
